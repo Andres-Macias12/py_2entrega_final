@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Lista de Artículos{% endblock %}
+
+{% block content %}
+    <h1>Lista de Artículos</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Contenido</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for articulo in articulos %}
+            <tr>
+                <td>{{ articulo.id }}</td>
+                <td>{{ articulo.titulo }}</td>
+                <td>{{ articulo.contenido[:50] }}...</td>
+                <td>
+                    <a href="{{ url_for('actualizar_articulo', id=articulo.id) }}" class="btn btn-warning">Editar</a>
+                    <form action="{{ url_for('eliminar_articulo', id=articulo.id) }}" method="post" style="display:inline;">
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que quieres eliminar este artículo?');">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Actualizar Artículo{% endblock %}
+
+{% block content %}
+    <h1>Actualizar Artículo</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.titulo.label(class="form-label") }}
+            {{ form.titulo(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.contenido.label(class="form-label") }}
+            {{ form.contenido(class="form-control") }}
+        </div>
+        {{ form.submit(class="btn btn-primary") }}
+    </form>
+{% endblock %}
